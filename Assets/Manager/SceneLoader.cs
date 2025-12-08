@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneLoader : GameManager
+public class SceneLoader : MonoSingleton<SceneLoader>
 {
     // Start is called before the first frame update
     void Start()

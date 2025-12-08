@@ -13,13 +13,13 @@ public class GameManager : MonoSingleton<GameManager>
     protected override void Awake()
     {
         //实例化各Manager。
-        Input.GetOrAdd<InputManager>();
-        Audio.GetOrAdd<AudioManager>();
-        Ui.GetOrAdd<UiManager>();
-        SceneLoader.GetOrAdd<SceneLoader>();
-        Save.GetOrAdd<SaveManager>();
-        Event.GetOrAdd<EventManager>();
-        Asset.GetOrAdd<AssetManaer>();
+        Input = GetOrAdd<InputManager>();
+        Audio = GetOrAdd<AudioManager>();
+        Ui = GetOrAdd<UiManager>();
+        SceneLoader = GetOrAdd<SceneLoader>();
+        Save = GetOrAdd<SaveManager>();
+        Event = GetOrAdd<EventManager>();
+        Asset = GetOrAdd<AssetManaer>();
         //这里遍历了GameManager子对象中的所有MonoBehaviour进行初始化操作。
         foreach (var manager in GetComponentsInChildren<MonoBehaviour>())
         {

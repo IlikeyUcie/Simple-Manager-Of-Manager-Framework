@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : GameManager
+public class InputManager : MonoSingleton<InputManager>
 {
     // Start is called before the first frame update
     void Start()
