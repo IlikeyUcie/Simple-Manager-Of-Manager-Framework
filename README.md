@@ -12,5 +12,9 @@
 - 更新了GameManager，使其成为了所有Manager的入口。
 - 在GameManager中创建了各Manager的字段，并且设置了初始化逻辑。
 - 增加了退出游戏的方法。
+  
+晚上进行了更新，主要是修复存在的问题
+- 发现Manager内部的子Manager并不是单例模式，虽然继承GameManager可以保证唯一入口且可随时调用。但无法保证唯一实例。因此改正为MonoSingleton继承。
+- 发现GameManager中的子Manager初始化赋值有问题，重新改正了。
 
 
