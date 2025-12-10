@@ -5,8 +5,8 @@ using UnityEngine;
 
 public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
 {
-    private T _instance;
-    public T Istance
+    private static T _instance;
+    public static T Instance
     {
         get
         {
@@ -33,7 +33,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
        /// <returns>
        /// 场景下实例化的单例。
        /// </returns>
-    T CreateInstance()
+   static T CreateInstance()
     {
         T instance;
         GameObject newGameObject = new GameObject(typeof(T).Name);
