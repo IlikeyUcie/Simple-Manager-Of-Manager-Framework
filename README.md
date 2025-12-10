@@ -16,5 +16,8 @@
 晚上进行了更新，主要是修复存在的问题
 - 发现Manager内部的子Manager并不是单例模式，虽然继承GameManager可以保证唯一入口且可随时调用。但无法保证唯一实例。因此改正为MonoSingleton继承。
 - 发现GameManager中的子Manager初始化赋值有问题，重新改正了。
-
+### 2025/12/10
+下午进行了更新
+- 修改了MonoSingleton中没有使用static导致继承无单例的bug
+- 添加了AssetManager用来添加和管理资源
 
