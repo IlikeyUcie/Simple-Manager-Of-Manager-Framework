@@ -20,4 +20,7 @@
 下午进行了更新
 - 修改了MonoSingleton中没有使用static导致继承无单例的bug
 - 添加了AssetManager用来添加和管理资源
-
+### 2025/12/12
+晚上进行了更新
+- 添加了AudioManager，并制作了其基本的功能模块
+- 添加了GameSoundGroupDataSO作为音频资源的数据容器
