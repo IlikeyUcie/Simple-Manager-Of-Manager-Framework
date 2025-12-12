@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager : GameManager
+public class EventManager : MonoSingleton<EventManager>
 {
     // Start is called before the first frame update
     void Start()

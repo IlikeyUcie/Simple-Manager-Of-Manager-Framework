@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
@@ -10,11 +11,19 @@ public class GameManager : MonoSingleton<GameManager>
     public SaveManager Save;
     public EventManager Event;
     public AssetManaer Asset;
+    public GameSoundDataSO gameSoundData;
+    public Dictionary<string, GameSoundGroupDataSO> gameSoundGroupData;
+
+    [Header("Audio")]
+    public AudioSource audioBGM;
+    public AudioSource audioUI;
+    public AudioSource audioScene;
     protected override void Awake()
     {
         //实例化各Manager。
         Input = GetOrAdd<InputManager>();
         Audio = GetOrAdd<AudioManager>();
+        Audio.Init(audioBGM, audioUI, audioScene);
         Ui = GetOrAdd<UiManager>();
         SceneLoader = GetOrAdd<SceneLoader>();
         Save = GetOrAdd<SaveManager>();
@@ -27,7 +36,12 @@ public class GameManager : MonoSingleton<GameManager>
             if (manager is IManager im) im.Init();
         }
         //使用单例中的awake方法，防止非惰性实例化造成的单例引用为空。
+        gameSoundGroupData = new Dictionary<string, GameSoundGroupDataSO>();
         base.Awake();
+    }
+    protected  void Start()
+    {
+        
     }
     /// <summary>
     /// 这个方法是退出游戏的方法，在编辑器模式直接暂停游戏，在打包后使用Application.Quit()直接退出程序。
@@ -57,11 +71,11 @@ public class GameManager : MonoSingleton<GameManager>
         t = go.AddComponent<T>();
         return t;
     }
-    /// <summary>
-    /// 表示Manager所需要继承的接口
-    /// </summary>
-    interface IManager
-    {
-        void Init();
-    }
+}
+/// <summary>
+/// 表示Manager所需要继承的接口
+/// </summary>
+public interface IManager
+{
+     void Init();
 }
