@@ -24,3 +24,6 @@
 晚上进行了更新
 - 添加了AudioManager，并制作了其基本的功能模块
 - 添加了GameSoundGroupDataSO作为音频资源的数据容器
+### 2025/12/14
+晚上进行了更新
+- 学习了Cinemahine，添加了CameraManager，并制做了其基本的功能模块
