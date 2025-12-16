@@ -27,3 +27,6 @@
 ### 2025/12/14
 晚上进行了更新
 - 学习了Cinemahine，添加了CameraManager，并制做了其基本的功能模块
+### 2025/12/14
+晚上进行了更新
+- 学习了InputSystem，添加了一个InputTools用来添加和取消订阅事件函数
