@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public enum ActionType
@@ -73,6 +74,17 @@ public static class InputTools
         action.performed -= context;
         action.canceled -= context;
 
+    }
+    public static void SwitchToActionMap(this InputActionAsset asset, string actionMap)
+    {
+        if (asset == null && string.IsNullOrEmpty(actionMap))
+            return;
+        asset.Disable();
+        var Map = asset.FindActionMap(actionMap);
+        if (Map == null)
+            Debug.Log("没有找到地图");
+        else
+            Map.Enable();
     }
 
 }
