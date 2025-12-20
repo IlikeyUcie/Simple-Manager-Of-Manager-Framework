@@ -27,3 +27,5 @@
 - 继续学习了InputSystem，添加了InputManager中的基本功能，其中包括，以委托的形式将回调函数订阅至事件中，在每帧结束前重置InputStateData需要重置的状态。
 - 添加了InputStateData，其中都是在输入后需要改变的状态，这个类主要是用来检测输入状态的。
 - 在InputTools中添加了一个切换ActionMap的扩展方法。
+### 2025/12/20
+- 学习了UniTask的相关内容，了解了基本知识，并且创建了一个基于UniTask延迟的TimeScaleManager
