@@ -12,6 +12,7 @@ public class GameManager : MonoSingleton<GameManager>
     public EventManager Event;
     public AssetManaer Asset;
     public GameSoundDataSO gameSoundData;
+    public TimeScaleManager Time;
     public Dictionary<string, GameSoundGroupDataSO> gameSoundGroupData;
 
     [Header("Audio")]
@@ -29,6 +30,8 @@ public class GameManager : MonoSingleton<GameManager>
         Save = GetOrAdd<SaveManager>();
         Event = GetOrAdd<EventManager>();
         Asset = GetOrAdd<AssetManaer>();
+        Time = GetOrAdd<TimeScaleManager>();
+     
         //这里遍历了GameManager子对象中的所有MonoBehaviour进行初始化操作。
         foreach (var manager in GetComponentsInChildren<MonoBehaviour>())
         {
@@ -38,6 +41,10 @@ public class GameManager : MonoSingleton<GameManager>
         //使用单例中的awake方法，防止非惰性实例化造成的单例引用为空。
         gameSoundGroupData = new Dictionary<string, GameSoundGroupDataSO>();
         base.Awake();
+    }
+    private void LateUpdate()
+    {
+        Input.ResetInputState();
     }
     protected  void Start()
     {

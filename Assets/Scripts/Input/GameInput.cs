@@ -28,15 +28,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             ""id"": ""25898b69-1efb-4ea8-bbd0-b7c9c17e0e35"",
             ""actions"": [
                 {
-                    ""name"": ""jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""7c400b3f-cbfa-46a7-a7ed-9e2a22201576"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""754d7e85-fc9f-4101-b5d8-2e56c2468559"",
@@ -155,17 +146,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""59a00538-e11b-4259-870e-da6b429d929e"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""2D Vector"",
                     ""id"": ""36fdad33-31fe-4337-8e0f-e21abfa8a93e"",
@@ -386,7 +366,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_jump = m_Player.FindAction("jump", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_MainWeapon = m_Player.FindAction("MainWeapon", throwIfNotFound: true);
@@ -471,7 +450,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-    private readonly InputAction m_Player_jump;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_MainWeapon;
@@ -489,7 +467,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     {
         private @GameInput m_Wrapper;
         public PlayerActions(@GameInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @jump => m_Wrapper.m_Player_jump;
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @MainWeapon => m_Wrapper.m_Player_MainWeapon;
@@ -512,9 +489,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
-            @jump.started += instance.OnJump;
-            @jump.performed += instance.OnJump;
-            @jump.canceled += instance.OnJump;
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
@@ -558,9 +532,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(IPlayerActions instance)
         {
-            @jump.started -= instance.OnJump;
-            @jump.performed -= instance.OnJump;
-            @jump.canceled -= instance.OnJump;
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
@@ -673,7 +644,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     public UIActions @UI => new UIActions(this);
     public interface IPlayerActions
     {
-        void OnJump(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnMainWeapon(InputAction.CallbackContext context);

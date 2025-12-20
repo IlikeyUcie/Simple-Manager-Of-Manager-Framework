@@ -6,15 +6,6 @@
             "id": "25898b69-1efb-4ea8-bbd0-b7c9c17e0e35",
             "actions": [
                 {
-                    "name": "jump",
-                    "type": "Button",
-                    "id": "7c400b3f-cbfa-46a7-a7ed-9e2a22201576",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Move",
                     "type": "Value",
                     "id": "754d7e85-fc9f-4101-b5d8-2e56c2468559",
@@ -133,17 +124,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "59a00538-e11b-4259-870e-da6b429d929e",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "2D Vector",
                     "id": "36fdad33-31fe-4337-8e0f-e21abfa8a93e",
